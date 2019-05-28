@@ -57,10 +57,23 @@ class App extends React.Component{
           "image": "http://via.placeholder.com/450x250",
           "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
         },
+        {
+          "id": 1501798834152,
+          "title": "MatLang",
+          "image": "http://via.placeholder.com/450x250",
+          "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+        },
+        {
+          "id": 1501798834153,
+          "title": "MatLang",
+          "image": "http://via.placeholder.com/450x250",
+          "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+        },
         
       ]
     }
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSingleView = this.handleSingleView.bind(this)
   }
   
   handleDelete(id){
@@ -68,6 +81,11 @@ class App extends React.Component{
       posts: this.state.posts.filter(post => post.id != id )
     })
   }
+  handleSingleView(id){
+    this.setState({
+       posts: this.state.posts.filter(post => post.id === id )
+     })
+   }
 
  render(){
    console.log(this);
@@ -85,7 +103,7 @@ class App extends React.Component{
          </div>
 
           { this.state.posts.map( post => (
-            <Portfolio key={post.id} post={ post } handleDelete={this.handleDelete} />
+            <Portfolio key={post.id} post={ post } handleDelete={this.handleDelete} handleSingleView={this.handleSingleView} />
           )) }
          
       </div>
@@ -100,7 +118,8 @@ export default App;
 class Portfolio extends React.Component {
   
     render (){
-     console.log('this.props', this.props)
+     //console.log('this.props', this.props)
+     //const {post, handleDelete, handleSingleView} = this.props;
       return (
         <div className="Portfolio">
         <div className="image-wrapper">
@@ -110,7 +129,8 @@ class Portfolio extends React.Component {
            <h2> {this.props.post.title } </h2>
            <p> {this.props.post.text } </p>
         </div>
-        <button onClick={ ()=> this.props.handleDelete(this.props.post.id) }>delete</button>  
+        <button onClick={ ()=> this.props.handleDelete(this.props.post.id) }>Delete</button>
+        <button onClick={ ()=> this.props.handleSingleView(this.props.post.id) }>View</button>  
      </div>
       )
     }
