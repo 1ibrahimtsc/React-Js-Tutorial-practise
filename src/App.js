@@ -119,18 +119,18 @@ class Portfolio extends React.Component {
   
     render (){
      //console.log('this.props', this.props)
-     //const {post, handleDelete, handleSingleView} = this.props;
+     const {post, handleDelete, handleSingleView} = this.props; //destructuring
       return (
         <div className="Portfolio">
         <div className="image-wrapper">
-          <img width="450" height="250" src={ this.props.post.image }/> 
+          <img width="450" height="250" src={ post.image }/> 
         </div>
         <div className="content-area">
            <h2> {this.props.post.title } </h2>
            <p> {this.props.post.text } </p>
         </div>
-        <button onClick={ ()=> this.props.handleDelete(this.props.post.id) }>Delete</button>
-        <button onClick={ ()=> this.props.handleSingleView(this.props.post.id) }>View</button>  
+        <button onClick={ ()=> this.props.handleDelete(post.id) }>Delete</button>
+        <button onClick={ ()=> this.props.handleSingleView(post.id) }>View</button>  
      </div>
       )
     }
