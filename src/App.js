@@ -1,26 +1,100 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+const data = [
+  {
+    "id": 1501798834150,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  },
+  {
+    "id": 1501798834151,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  },
+  {
+    "id": 1501798834152,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  },
+  {
+    "id": 1501798834153,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  },
+  {
+    "id": 1501798834154,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  },
+  {
+    "id": 1501798834155,
+    "title": "MatLang",
+    "image": "http://via.placeholder.com/450x250",
+    "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+  }
+]
 
-function App() {
+class App extends React.Component{
+
+ render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="HeaderWrap">
+         <h1 className="App-title">Welcole React Js </h1>
+      </div>
+      <div className="Listcontainer">
+         
+         <div className="Portfolio">
+            <div className="image-wrapper">
+              <img width="450" height="250" src="http://via.placeholder.com/450x250"/> 
+            </div>  
+         </div>
+
+         
+
+         <div className="Portfolio">
+            <div className="image-wrapper">
+              <img width="450" height="250" src="http://via.placeholder.com/450x250"/> 
+            </div>  
+         </div>
+
+         <div className="Portfolio">
+            <div className="image-wrapper">
+              <img width="450" height="250" src="http://via.placeholder.com/450x250"/> 
+            </div>  
+         </div>
+          { data.map( post => (
+            <Portfolio post={ post } />
+          )) }
+         
+      </div>
+
     </div>
   );
+ }
 }
 
 export default App;
+
+class Portfolio extends React.Component {
+    render (){
+
+      return (
+        <div className="Portfolio">
+        <div className="image-wrapper">
+          <img width="450" height="250" src={ this.props.post.image }/> 
+        </div>
+        <div className="content-area">
+           <h2> {this.props.post.title } </h2>
+           <p> {this.props.post.text } </p>
+        </div>  
+     </div>
+      )
+    }
+}
