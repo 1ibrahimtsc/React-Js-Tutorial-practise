@@ -41,10 +41,36 @@ const data = [
 ]
 
 class App extends React.Component{
-  handleDelete(id){
-    alert(id)
+  constructor(){
+    super();
+    this.state = {
+      posts: [
+        {
+          "id": 1501798834150,
+          "title": "MatLang",
+          "image": "http://via.placeholder.com/450x250",
+          "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+        },
+        {
+          "id": 1501798834151,
+          "title": "MatLang",
+          "image": "http://via.placeholder.com/450x250",
+          "text": "quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ips"
+        },
+        
+      ]
+    }
+    this.handleDelete = this.handleDelete.bind(this)
   }
+  
+  handleDelete(id){
+   this.setState({
+      posts: this.state.posts.filter(post => post.id != id )
+    })
+  }
+
  render(){
+   console.log(this);
   return (
     <div className="App">
       <div className="HeaderWrap">
@@ -58,20 +84,7 @@ class App extends React.Component{
             </div>  
          </div>
 
-         
-
-         <div className="Portfolio">
-            <div className="image-wrapper">
-              <img width="450" height="250" src="http://via.placeholder.com/450x250"/> 
-            </div>  
-         </div>
-
-         <div className="Portfolio">
-            <div className="image-wrapper">
-              <img width="450" height="250" src="http://via.placeholder.com/450x250"/> 
-            </div>  
-         </div>
-          { data.map( post => (
+          { this.state.posts.map( post => (
             <Portfolio key={post.id} post={ post } handleDelete={this.handleDelete} />
           )) }
          
@@ -85,8 +98,6 @@ class App extends React.Component{
 export default App;
 
 class Portfolio extends React.Component {
-
-
   
     render (){
      console.log('this.props', this.props)
