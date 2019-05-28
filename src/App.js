@@ -41,7 +41,9 @@ const data = [
 ]
 
 class App extends React.Component{
-
+  handleDelete(id){
+    alert(id)
+  }
  render(){
   return (
     <div className="App">
@@ -70,7 +72,7 @@ class App extends React.Component{
             </div>  
          </div>
           { data.map( post => (
-            <Portfolio post={ post } />
+            <Portfolio key={post.id} post={ post } handleDelete={this.handleDelete} />
           )) }
          
       </div>
@@ -83,8 +85,11 @@ class App extends React.Component{
 export default App;
 
 class Portfolio extends React.Component {
-    render (){
 
+
+  
+    render (){
+     console.log('this.props', this.props)
       return (
         <div className="Portfolio">
         <div className="image-wrapper">
@@ -93,7 +98,8 @@ class Portfolio extends React.Component {
         <div className="content-area">
            <h2> {this.props.post.title } </h2>
            <p> {this.props.post.text } </p>
-        </div>  
+        </div>
+        <button onClick={ ()=> this.props.handleDelete(this.props.post.id) }>delete</button>  
      </div>
       )
     }
